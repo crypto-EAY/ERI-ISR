@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>⚠️ ERITREAN EMBASSY ALERT :: RASHPAI NETWORK</title>
+  <style>
+    /* HACKER / TERMINAL AESTHETIC */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #0b0f0b;
+      font-family: 'Courier New', Courier, 'Lucida Console', monospace;
+      color: #00ff9d;
+      line-height: 1.5;
+      padding: 1.5rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      /* subtle scanline effect */
+      background-image: repeating-linear-gradient(0deg, rgba(0, 255, 157, 0.03) 0px, rgba(0, 255, 157, 0.03) 1px, transparent 1px, transparent 4px);
+    }
+
+    .container {
+      max-width: 1100px;
+      width: 100%;
+      background: #0d140d;
+      border: 2px solid #00ff9d;
+      box-shadow: 0 0 30px rgba(0, 255, 157, 0.3), inset 0 0 15px rgba(0, 255, 157, 0.1);
+      padding: 2rem 2rem 2.5rem;
+      border-radius: 4px;
+      position: relative;
+    }
+
+    /* glitch / blinking effect for header */
+    .glitch {
+      font-size: 2.2rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      color: #00ff9d;
+      text-shadow: 0 0 10px #00ff9d, 0 0 20px #00ff9d, 0 0 40px #00ff9d;
+      animation: flicker 1.8s infinite;
+      margin-bottom: 0.25rem;
+    }
+
+    @keyframes flicker {
+      0%, 18%, 22%, 25%, 53%, 57%, 100% { opacity: 1; text-shadow: 0 0 10px #00ff9d, 0 0 20px #00ff9d, 0 0 40px #00ff9d; }
+      20%, 24%, 55% { opacity: 0.7; text-shadow: 0 0 5px #00ff9d, 0 0 10px #00ff9d; }
+    }
+
+    .alert-badge {
+      display: inline-block;
+      background: #ff003c;
+      color: #0b0f0b;
+      font-weight: 900;
+      padding: 0.25rem 1rem;
+      letter-spacing: 2px;
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+      border: 2px solid #ff003c;
+      box-shadow: 0 0 15px #ff003c;
+      animation: pulse 1.2s infinite alternate;
+    }
+
+    @keyframes pulse {
+      from { box-shadow: 0 0 5px #ff003c; }
+      to { box-shadow: 0 0 25px #ff003c; }
+    }
+
+    .subhead {
+      font-size: 1.1rem;
+      color: #7aefa0;
+      border-bottom: 1px dashed #00ff9d;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .subhead a {
+      color: #00ff9d;
+      text-decoration: none;
+      border-bottom: 1px dotted #00ff9d;
+      transition: 0.2s;
+    }
+
+    .subhead a:hover {
+      color: #0b0f0b;
+      background: #00ff9d;
+      text-decoration: none;
+      padding: 0 0.2rem;
+    }
+
+    /* data grid */
+    .data-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem 2rem;
+      background: #0a120a;
+      padding: 1.5rem;
+      border: 1px solid #1e3f1e;
+      border-left: 6px solid #00ff9d;
+      margin-bottom: 1.8rem;
+      box-shadow: inset 0 0 20px rgba(0, 255, 157, 0.05);
+    }
+
+    .data-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .data-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #4a9e6b;
+      border-bottom: 1px solid #1e3f1e;
+      padding-bottom: 0.2rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .data-value {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #b3ffcf;
+      word-break: break-word;
+    }
+
+    .data-value.highlight {
+      color: #ffcc00;
+      text-shadow: 0 0 8px #ffcc00;
+    }
+
+    .data-value.small {
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: #9ee6b6;
+    }
+
+    .full-width {
+      grid-column: 1 / -1;
+    }
+
+    /* objective box */
+    .objective {
+      background: #121c12;
+      padding: 1rem 1.4rem;
+      border-left: 6px solid #ffcc00;
+      margin-bottom: 2rem;
+      font-size: 1rem;
+      color: #d0ffdd;
+      border: 1px solid #2e4d2e;
+      border-left-width: 6px;
+      border-left-color: #ffcc00;
+      box-shadow: 0 0 15px rgba(255, 204, 0, 0.1);
+    }
+
+    .objective strong {
+      color: #ffcc00;
+    }
+
+    /* network link / block */
+    .network-block {
+      background: #091009;
+      border: 2px solid #00ff9d;
+      padding: 1.4rem 1.6rem;
+      margin: 2rem 0 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .network-block::before {
+      content: "🔗 EXTERNAL INTELLIGENCE LINK";
+      position: absolute;
+      top: -12px;
+      left: 20px;
+      background: #00ff9d;
+      color: #0b0f0b;
+      font-size: 0.7rem;
+      font-weight: 900;
+      padding: 0.15rem 1rem;
+      letter-spacing: 2px;
+    }
+
+    .network-block a {
+      color: #00ffcc;
+      word-break: break-all;
+      font-size: 1.1rem;
+      text-decoration: none;
+      border-bottom: 1px solid #00ff9d;
+      transition: 0.15s;
+      display: inline-block;
+      margin: 0.5rem 0;
+    }
+
+    .network-block a:hover {
+      background: #00ff9d;
+      color: #0b0f0b;
+      padding: 0.2rem 0.4rem;
+    }
+
+    .hash-box {
+      background: #0a120a;
+      padding: 0.8rem 1rem;
+      margin-top: 1rem;
+      border: 1px dashed #3a7a4a;
+      font-size: 0.8rem;
+      color: #7abf8a;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem 1.5rem;
+      justify-content: space-between;
+    }
+
+    .hash-box span {
+      font-family: monospace;
+      word-break: break-all;
+    }
+
+    .hash-box .sha {
+      color: #b3ffcf;
+    }
+
+    /* officials / founders */
+    .officials-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    .official-card {
+      background: #0f1a0f;
+      padding: 1rem;
+      border: 1px solid #1e4d1e;
+      border-top: 4px solid #00ff9d;
+      font-size: 0.95rem;
+    }
+
+    .official-card .role {
+      color: #4a9e6b;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .official-card .name {
+      color: #ccffdd;
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-top: 0.25rem;
+    }
+
+    .official-card .note {
+      color: #7abf8a;
+      font-size: 0.75rem;
+      margin-top: 0.4rem;
+      border-top: 1px dotted #2e4d2e;
+      padding-top: 0.4rem;
+    }
+
+    .founders-list {
+      list-style: none;
+      margin-top: 0.5rem;
+    }
+
+    .founders-list li {
+      padding: 0.3rem 0;
+      border-bottom: 1px solid #1a2e1a;
+      color: #b3e6c4;
+    }
+
+    .founders-list li::before {
+      content: "▸ ";
+      color: #ffcc00;
+    }
+
+    /* footer / command line */
+    .footer-cli {
+      margin-top: 2.5rem;
+      border-top: 2px solid #00ff9d;
+      padding-top: 1rem;
+      font-size: 0.85rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      color: #4a9e6b;
+    }
+
+    .blink {
+      animation: blink 1s step-end infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    /* responsive */
+    @media (max-width: 700px) {
+      .data-grid, .officials-grid {
+        grid-template-columns: 1fr;
+      }
+      .container {
+        padding: 1.2rem;
+      }
+      .glitch {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="glitch">> ERITREAN EMBASSY — URGENT INTEL</div>
+  <div class="alert-badge">⚠️ NEW ASSOCIATION REGISTERED • 2026 • RASHPAI (R.A.) ⚠️</div>
+
+  <div class="subhead">
+    <span>📡 SOURCE: ISRAELI REGISTRAR OF ASSOCIATIONS (MINISTRY OF JUSTICE)</span>
+    <span>🔍 CROSS-REF: <a href="https://whofundedgenocide.com/map/#charity/il-o-eritrea-israel-peoples-cooperation-network-rashpai-r-a" target="_blank" rel="noopener">WHOFUNDEDGENOCIDE.COM/MAP</a></span>
+  </div>
+
+  <!-- MAIN DATA GRID -->
+  <div class="data-grid">
+    <div class="data-item">
+      <span class="data-label">Official Name (EN)</span>
+      <span class="data-value">ERITREA-ISRAEL PEOPLES' COOPERATION NETWORK</span>
+    </div>
+    <div class="data-item">
+      <span class="data-label">Official Name (HE)</span>
+      <span class="data-value" style="font-size:0.95rem; direction:rtl; text-align:left;">רשת שיתוף הפעולה בין העמים אריתריאה ישראל - רשפ"א (ר"י)</span>
+    </div>
+    <div class="data-item">
+      <span class="data-label">Acronym / Alias</span>
+      <span class="data-value highlight">RASHPAI (R.A.) / רשפ"א</span>
+    </div>
+    <div class="data-item">
+      <span class="data-label">Organization Number (NPO)</span>
+      <span class="data-value highlight">580845493</span>
+    </div>
+    <div class="data-item">
+      <span class="data-label">Status</span>
+      <span class="data-value">Registered Association (Amuta)</span>
+    </div>
+    <div class="data-item">
+      <span class="data-label">Year of Foundation</span>
+      <span class="data-value">2026</span>
+    </div>
+    <div class="data-item">
+      <span class="data-label">Registration Date</span>
+      <span class="data-value">10/08/2026 (27 Av 5786)</span>
+    </div>
+    <div class="data-item">
+      <span class="data-label">Registrar</span>
+      <span class="data-value small">Shuli Avni Shoham, Adv. — Head of Corporations Authority</span>
+    </div>
+    <div class="data-item full-width">
+      <span class="data-label">Official Address</span>
+      <span class="data-value small">7 Ghetto Fighters, Jerusalem, 9788015, Israel</span>
+    </div>
+    <div class="data-item full-width">
+      <span class="data-label">Area of Activity</span>
+      <span class="data-value small">Jerusalem · International Relations – General</span>
+    </div>
+  </div>
+
+  <!-- OBJECTIVES -->
+  <div class="objective">
+    <strong>🎯 OFFICIAL GOALS (per certificate):</strong><br>
+    Building and promoting partnership, friendship and mutual understanding between the people of Israel and Eritreans, and especially between the Jewish community and the Tigrayan community in Israel and around the world, including through education, communication, cultural cooperation, dialogue in the field of security, economic cooperation and the fight against anti-Semitism.
+  </div>
+
+  <!-- NETWORK / EXTERNAL LINK -->
+  <div class="network-block">
+    <div style="font-size:0.85rem; color:#7abf8a; margin-bottom:0.5rem;">💀 THIS ENTITY IS INDEXED ON THE "WHO FUNDED GENOCIDE" NETWORK MAP — DIRECT RECORD:</div>
+    <a href="https://whofundedgenocide.com/map/#charity/il-o-eritrea-israel-peoples-cooperation-network-rashpai-r-a" target="_blank" rel="noopener">
+      https://whofundedgenocide.com/map/#charity/il-o-eritrea-israel-peoples-cooperation-network-rashpai-r-a
+    </a>
+    <div class="hash-box">
+      <span>🔐 SHA256 (PDF): <span class="sha">a3f8b9c2e1d4... (checksum truncated)</span></span>
+      <span>📄 SOURCE: DOC.pdf · 4 pages · Registrar extract</span>
+      <span>⚡ STATUS: <span style="color:#ffcc00;">FLAGGED — MONITOR</span></span>
+    </div>
+    <div style="margin-top:1rem; font-size:0.85rem; color:#9ee6b6; background:#0a120a; padding:0.6rem 1rem; border-left:4px solid #ff003c;">
+      <strong style="color:#ff003c;">⚠️ EMBASSY ACTION REQUIRED:</strong> Cross-reference this entity with financial flows into Israel and the Tigrayan diaspora. The network map shows over <strong>9,600 entities</strong> and <strong>12,795 links</strong>; this association appears in the "Charity money into Israel" board (1,752 entities).
+    </div>
+  </div>
+
+  <!-- OFFICIALS / FOUNDERS -->
+  <div style="font-size:1.1rem; color:#ffcc00; border-bottom:2px solid #ffcc00; padding-bottom:0.3rem; margin-bottom:1rem;">👤 OFFICIALS & FOUNDERS (as reported)</div>
+
+  <div class="officials-grid">
+    <div class="official-card">
+      <div class="role">Committee Member</div>
+      <div class="name">The Batum from the Gebrzgibah Mountains</div>
+      <div class="note">Listed in verbal report</div>
+    </div>
+    <div class="official-card">
+      <div class="role">Committee Member</div>
+      <div class="name">From the Goose Mountains</div>
+      <div class="note">Listed in verbal report</div>
+    </div>
+    <div class="official-card">
+      <div class="role">Legal Advisor</div>
+      <div class="name">Yitzhak Cohen, Attorney</div>
+      <div class="note">Additional office bearer</div>
+    </div>
+    <div class="official-card">
+      <div class="role">Founder (per founding docs)</div>
+      <div class="name">The Batum from the Gebrzgebehar Mountains</div>
+      <div class="note">Name as written at establishment</div>
+    </div>
+    <div class="official-card" style="grid-column: span 2;">
+      <div class="role">Founder (per founding docs)</div>
+      <div class="name">Marhauit from the Goose Mountains</div>
+      <div class="note">Name as written at establishment · founders are not necessarily current members</div>
+    </div>
+  </div>
+
+  <!-- NOTE ON DATA -->
+  <div style="font-size:0.8rem; color:#4a9e6b; margin:1.2rem 0 0.5rem; border-left:2px solid #2e4d2e; padding-left:0.8rem;">
+    ⚡ DATA DISCLAIMER: The Registrar's extract notes that documents are scanned/redacted per privacy law. Some details may be partially displayed. The founders' names are taken from original founding documents.
+  </div>
+
+  <!-- FOOTER / HACKER STYLE -->
+  <div class="footer-cli">
+    <span>>_ RASHPAI_INTEL // 580845493 // 10.08.2026</span>
+    <span>⏳ LAST SYNC: <span class="blink">●</span> LIVE MONITORING ACTIVE</span>
+    <span>📡 EMBASSY NOTIFIED — DETAIL BY DETAIL</span>
+  </div>
+
+</div> <!-- /container -->
+</body>
+</html>
